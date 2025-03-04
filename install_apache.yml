@@ -1,0 +1,14 @@
+---
+- name: Installer Apache sur des nœuds Linux
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: Installer le paquet Apache
+      apt:
+        name: apache2
+        state: present
+    - name: Démarrer le service Apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
